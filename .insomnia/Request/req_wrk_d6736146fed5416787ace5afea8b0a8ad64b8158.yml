@@ -1,0 +1,30 @@
+_id: req_wrk_d6736146fed5416787ace5afea8b0a8ad64b8158
+type: Request
+parentId: wrk_d6736146fed5416787ace5afea8b0a8a
+modified: 1664990877960
+created: 1664990624977
+url: "{{ base_url }}/api/User/Login"
+name: /api/User/Login
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "userName": "meneillos",
+      "password": "12345678"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_21696072bc1041fd80d027c8cb6c7730
+authentication: {}
+metaSortKey: -1664990624977
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

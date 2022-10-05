@@ -1,0 +1,27 @@
+_id: req_wrk_d6736146fed5416787ace5afea8b0a8aa14f983a
+type: Request
+parentId: wrk_d6736146fed5416787ace5afea8b0a8a
+modified: 1664991049152
+created: 1664990624974
+url: "{{ base_url }}/api/User"
+name: /api/User
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_11bcccf8f4ef4b5aae134caa75187a98
+    name: ""
+    value: ""
+    description: ""
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtZW5laWxsb3MiLCJuYmYiOjE2NjQ5OTA4NzksImV4cCI6MTY2NDk5NDQ3OSwiaWF0IjoxNjY0OTkwODc5fQ.sPO-NLPqD9X090CRQ4WuHH0lidVXGq_pMqLtTLTtVdCnjdq6PAI976mcNqVGonDMCOJRpzduR-Y0QaC2ESTRfw
+metaSortKey: -1664990624974
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
