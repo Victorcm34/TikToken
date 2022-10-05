@@ -1,7 +1,7 @@
 _id: req_wrk_d6736146fed5416787ace5afea8b0a8aa14f983a
 type: Request
 parentId: wrk_d6736146fed5416787ace5afea8b0a8a
-modified: 1664991049152
+modified: 1664992421536
 created: 1664990624974
 url: "{{ base_url }}/api/User"
 name: /api/User
@@ -9,14 +9,11 @@ description: ""
 method: GET
 body: {}
 parameters: []
-headers:
-  - id: pair_11bcccf8f4ef4b5aae134caa75187a98
-    name: ""
-    value: ""
-    description: ""
+headers: []
 authentication:
   type: bearer
-  token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtZW5laWxsb3MiLCJuYmYiOjE2NjQ5OTA4NzksImV4cCI6MTY2NDk5NDQ3OSwiaWF0IjoxNjY0OTkwODc5fQ.sPO-NLPqD9X090CRQ4WuHH0lidVXGq_pMqLtTLTtVdCnjdq6PAI976mcNqVGonDMCOJRpzduR-Y0QaC2ESTRfw
+  token: "{% dotenv 'D:\\\\Repos\\\\TikToken\\\\.insomnia\\\\.env', 'token' %}"
+  prefix: ""
 metaSortKey: -1664990624974
 isPrivate: false
 settingStoreCookies: true
