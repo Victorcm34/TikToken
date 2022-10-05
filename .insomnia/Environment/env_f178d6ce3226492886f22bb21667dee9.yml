@@ -1,0 +1,18 @@
+_id: env_f178d6ce3226492886f22bb21667dee9
+type: Environment
+parentId: env_3ee1032abd071e871abbb10877faf0b020884edd
+modified: 1664990818822
+created: 1664990702713
+name: Docker
+data:
+  scheme: http
+  base_path: ""
+  host: localhost:8080
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: "#75caff"
+isPrivate: false
+metaSortKey: 1664990702713

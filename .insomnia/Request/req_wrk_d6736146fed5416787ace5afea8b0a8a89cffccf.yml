@@ -1,0 +1,31 @@
+_id: req_wrk_d6736146fed5416787ace5afea8b0a8a89cffccf
+type: Request
+parentId: wrk_d6736146fed5416787ace5afea8b0a8a
+modified: 1664990836949
+created: 1664990624979
+url: "{{ base_url }}/api/User/Register"
+name: /api/User/Register
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "userName": "string",
+      "email": "user@example.com",
+      "password": "string"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_8d4952077e20460a8d967ed37ac2f749
+authentication: {}
+metaSortKey: -1664990624979
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

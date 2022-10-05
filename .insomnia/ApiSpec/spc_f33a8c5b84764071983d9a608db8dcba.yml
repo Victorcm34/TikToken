@@ -1,0 +1,137 @@
+_id: spc_f33a8c5b84764071983d9a608db8dcba
+type: ApiSpec
+parentId: wrk_d6736146fed5416787ace5afea8b0a8a
+modified: 1664990868574
+created: 1664990515693
+fileName: TikToken
+contents: |-
+  {
+    "openapi": "3.0.1",
+    "info": {
+      "title": "TikToken",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/User/Register": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDTO"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDTO"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/User/Login": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginDTO"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginDTO"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/User": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "LoginDTO": {
+          "required": [
+            "password",
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "RegisterDTO": {
+          "required": [
+            "email",
+            "userName"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "pattern": "^[\\w\\.]{5,20}$",
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "password": {
+              "maxLength": 30,
+              "minLength": 8,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+contentType: yaml
