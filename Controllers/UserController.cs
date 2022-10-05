@@ -27,8 +27,15 @@ namespace TikToken.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult> RegisterUser([FromBody, Required] RegisterDTO newUser)
         {
-            int userId = await _userService.RegisterAsync(newUser);
-            return userId != -1 ? Ok(new { userid = userId }) : StatusCode(500, new { error = "Error registering user" });
+            try
+            {
+                int userId = await _userService.RegisterAsync(newUser);
+                return userId != -1 ? Ok(new { userid = userId }) : BadRequest(new { error = "Username or email already exists" });
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500, new { error = "Error registering user" });
+            }
         }
 
         [HttpPost("Login")]
@@ -37,14 +44,21 @@ namespace TikToken.Controllers
             User? user = _userService.Login(userLogin);
             if (user == null) return Unauthorized(new { error = "Invalid user or password" });
             string token = _tokenService.CreateToken(user);
-            return Ok(new UserDTO{UserName = user.UserName, Token = token});
+            return Ok(new UserDTO { UserName = user.UserName, Token = token });
         }
 
-        [Authorize]    
+        [Authorize("admin")]
         [HttpGet()]
         public ActionResult GetSomething()
         {
-            return Ok("Hello");
+            try
+            {
+                return Ok(_userService.GetAll());
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500, new { error = "Error obtaining users list" });
+            }
         }
     }
 }

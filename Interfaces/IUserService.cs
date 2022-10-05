@@ -11,5 +11,6 @@ namespace TikToken.Interfaces
     {
         public Task<int> RegisterAsync(RegisterDTO newUser);
         public User? Login(LoginDTO login);
+        public List<UserViewDTO> GetAll();
     }
 }

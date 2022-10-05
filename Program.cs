@@ -1,15 +1,18 @@
 using System.Text;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TikToken.Database;
 using TikToken.Interfaces;
+using TikToken.Models;
 using TikToken.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Database Context.
 builder.Services.AddDbContext<Context>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+// Authentication config.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -20,6 +23,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateAudience = false
     };
 });
+// Authorization Policies.
+builder.Services.AddAuthorization(config =>
+{
+    config.AddPolicy("admin", options => options.RequireRole(User.Roles.Admin.ToString()));
+});
+// Automapper.
+var config = new MapperConfiguration(mc =>
+    {
+        mc.AddProfile(new MapperService());
+    });
+
+IMapper mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
 // Add services to the container.
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();

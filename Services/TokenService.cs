@@ -23,7 +23,8 @@ namespace TikToken.Services
         {
             List<Claim> claims = new()
             {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName!)
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName!),
+                new Claim(ClaimTypes.Role, user.Role.ToString())
             };
             SigningCredentials credentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             SecurityTokenDescriptor tokenDescriptor = new()

@@ -12,7 +12,9 @@ namespace TikToken.Services
     {
         public MapperService()
         {
-            CreateMap<User, UserDTO>().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName));
+            CreateMap<User, UserViewDTO>().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+                                          .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                                          .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using TikToken.Database;
 using TikToken.DTOs;
 using TikToken.Interfaces;
@@ -15,10 +16,12 @@ namespace TikToken.Services
     public class UserService : IUserService
     {
         private readonly Context _context;
+        private readonly IMapper _mapper;
 
-        public UserService(Context context)
+        public UserService(Context context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<int> RegisterAsync(RegisterDTO newUser)
@@ -42,7 +45,7 @@ namespace TikToken.Services
             {
                 //Log Error
                 Debug.WriteLine(ex.ToString());
-                return -1;
+                throw;
             }
         }
 
@@ -64,6 +67,12 @@ namespace TikToken.Services
         private bool EmailExists(string mail)
         {
             return _context.User!.Where(u => u.UserName == mail).Any();
+        }
+
+        public List<UserViewDTO> GetAll()
+        {
+            List<User> users = _context.User!.ToList();
+            return _mapper.Map<List<User>, List<UserViewDTO>>(users);
         }
     }
 }
