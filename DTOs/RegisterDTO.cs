@@ -8,7 +8,9 @@ namespace TikToken.DTOs
 {
     public class RegisterDTO
     {
+        [Required]
         private string? username { get; set; }
+        [Required]
         private string? email { get; set; }
         [Required, RegularExpression(@"^[\w\.]{5,20}$")]
         public string? UserName { get => username; set => username = value!.ToLower() ; }
